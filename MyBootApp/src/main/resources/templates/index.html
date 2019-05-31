@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>top page</title>
-<style>
+<style type="text/css">
 h1 {
 	font-size: 18pt;
 	font-weight: bold;
@@ -11,18 +11,22 @@ h1 {
 }
 
 body {
-	font-size: 18pt;
+	font-size: 13pt;
 	color: gray;
 	margin: 5px 25px;
 }
 </style>
+<link rel="stylesheet"
+	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
+	integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w"
+	crossorigin="anonymous">
 </head>
 <body>
 	<h1>Helo page</h1>
-	<p class="msg" th:text="${msg}"></p>
-	<form method="post" action="/">
-		<input type="text" name="text1" th:value="${value}" />
-		<input type="submit" value="Click" />
+	<p th:text="${msg}">please wait...</p>
+	<form class="pure-form" method="post" action="/">
+		<input type="text" name="text1" th:value="${value}" /> <input
+			class="pure-button pure-button-primary" type="submit" value="Click" />
 	</form>
 </body>
 </html>
