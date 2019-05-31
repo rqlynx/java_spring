@@ -51,5 +51,4 @@ class DataObject {
 	public void setValue(String value) {
 		this.value = value;
 	}
-
 }
