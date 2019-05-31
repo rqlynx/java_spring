@@ -17,4 +17,5 @@ public class HeloController {
 		model.addAttribute("msg", "total: " + res);
 		return "index";
 	}
+
 }
