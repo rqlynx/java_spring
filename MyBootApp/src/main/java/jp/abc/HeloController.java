@@ -17,9 +17,12 @@ public class HeloController {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public ModelAndView send(@RequestParam("text1") String str, ModelAndView mav) {
+	public ModelAndView send(@RequestParam("text1") String str, @RequestParam("text2") String str2, ModelAndView mav) {
+		int p = (str + str2).hashCode() % 10;
 		mav.addObject("msg", "こんにちは、" + str + "さん！");
+		mav.addObject("result", str + "さんの" + str2 + "度は" + p + "%です。");
 		mav.addObject("value", str);
+		mav.addObject("text2", str2);
 		mav.setViewName("index");
 		return mav;
 	}
