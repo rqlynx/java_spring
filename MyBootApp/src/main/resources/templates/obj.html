@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>選択オブジェクト</title>
+<style type="text/css">
+h1 {
+	font-size: 18pt;
+	font-weight: bold;
+	color: gray;
+}
+
+body {
+	font-size: 13pt;
+	color: gray;
+	margin: 5px 25px;
+}
+
+tr {
+	margin: 5x;
+}
+
+th {
+	padding: 5px;
+	color: white;
+	background: darkgray;
+}
+
+td {
+	padding: 5px;
+	color: black;
+	background: #f0f0f0;
+}
+</style>
+</head>
+<body>
+	<h1>選択オブジェクトの変数式</h1>
+	<p th:text="${msg}"></p>
+	<table th:object="${obj}">
+		<tr>
+			<th>ID</th>
+			<td th:text="*{id}"></td>
+		</tr>
+		<tr>
+			<th>NAME</th>
+			<td th:text="*{name}"></td>
+		</tr>
+		<tr>
+			<th>MAIL</th>
+			<td th:text="*{value}"></td>
+		</tr>
+	</table>
+
+	<div th:object="${obj}">
+		<p th:text="|my name is *{name}. mail address is *{value}.|">message.</p>
+	</div>
+
+	<p th:text="${code}">message</p>
+	<p th:utext="${code}">message</p>
+</body>
+</html>
