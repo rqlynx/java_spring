@@ -34,8 +34,15 @@ td {
 </style>
 </head>
 <body>
-	<h1>条件分岐</h1>
-	<p th:if="${check}" th:text="${id} + ' is ' + ${trueVal}">message.</p>
-	<p th:unless="${check}" th:text="${id} + ' is ' + ${falseVal}">message.</p>
+	<h1>多項分岐</h1>
+
+	<div th:switch="${check}">
+		<p th:case="0" th:text="|${month} - Winter|"></p>
+		<p th:case="1" th:text="|${month} - Spring|"></p>
+		<p th:case="2" th:text="|${month} - Summer|"></p>
+		<p th:case="3" th:text="|${month} - Autumn|"></p>
+		<p th:case="4" th:text="|${month} - Winter|"></p>
+	</div>
+
 </body>
 </html>

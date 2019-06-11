@@ -32,10 +32,18 @@ td {
 	background: #f0f0f0;
 }
 </style>
+<script th:inline="javascript">
+function action(){
+	var val = document.getElementById("text1").value;
+	var res = parseInt(val * ((100 + /*[[${tax}]]*/) / 100))
+	document.getElementById("msg").innerHTML = "include tax: " + res ;
+}
+</script>
 </head>
 <body>
-	<h1>条件分岐</h1>
-	<p th:if="${check}" th:text="${id} + ' is ' + ${trueVal}">message.</p>
-	<p th:unless="${check}" th:text="${id} + ' is ' + ${falseVal}">message.</p>
+	<h1>インライン</h1>
+	<p id="msg"></p>
+	<input type="text" id="text1"></input>
+	<button onclick="action()">action</button>
 </body>
 </html>

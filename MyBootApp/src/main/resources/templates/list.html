@@ -34,8 +34,18 @@ td {
 </style>
 </head>
 <body>
-	<h1>条件分岐</h1>
-	<p th:if="${check}" th:text="${id} + ' is ' + ${trueVal}">message.</p>
-	<p th:unless="${check}" th:text="${id} + ' is ' + ${falseVal}">message.</p>
+	<h1>繰り返し</h1>
+	<table>
+		<tr>
+			<th>NAME</th>
+			<th>MAIL</th>
+			<th>TEL</th>
+		</tr>
+		<tr th:each="obj:${data}">
+			<td th:text="${obj[0]}"></td>
+			<td th:text="${obj[1]}"></td>
+			<td th:text="${obj[2]}"></td>
+		</tr>
+	</table>
 </body>
 </html>
