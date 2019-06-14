@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class IndexController {
 
-	@RequestMapping("/index/{num}")
+	@RequestMapping("/index/{num}") //URLのパスを指定 /{変数}を指定するときはPathVariable
 	public String index(@PathVariable int num, Model model) {
 		int res = 0;
 		for (int i = 1; i <= num; i++) {
@@ -29,7 +29,7 @@ public class IndexController {
 		for (int i = 1; i <= num; i++) {
 			res += i;
 		}
-		mav.addObject("msg", "total: " + res);
+		mav.addObject("msg", "total: " + res); //
 		mav.setViewName("index");
 		return mav;
 	}
@@ -118,6 +118,6 @@ public class IndexController {
 
 	@RequestMapping("/frag")
 	public String frag() {
-	    return "frag";
+		return "frag";
 	}
 }
