@@ -16,20 +16,16 @@ body {
 	margin: 5px 25px;
 }
 </style>
-<link rel="stylesheet"
-	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
-	integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w"
-	crossorigin="anonymous">
 </head>
 <body>
-<h1>form1</h1>
+	<h1>form1</h1>
 
-<p th:text="${msg}">please wait...</p>
-<p th:text="${result}">please wait...</p>
-<form class="pure-form" method="post" action="/form1" >
-    <input type="text" name="text1" th:value="${value}" /><br />
-    <input type="text" name="text2" th:value="${text2}" /><br />
-    <input class="pure-button pure-button-primary"type="submit" value="Click" />
-</form>
+	<p th:text="${msg}">please wait...</p>
+	<p th:text="${result}">please wait...</p>
+	<form class="pure-form" method="post" action="/form1">
+		<input type="text" name="text1" th:value="${value}" /><br /> <input
+			type="text" name="text2" th:value="${text2}" /><br /> <input
+			class="pure-button pure-button-primary" type="submit" value="Click" />
+	</form>
 </body>
 </html>
