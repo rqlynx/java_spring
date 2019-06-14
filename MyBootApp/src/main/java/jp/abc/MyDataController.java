@@ -14,14 +14,14 @@ import jp.abc.repositories.MyDataRepository;
 public class MyDataController {
 
 	@Autowired
-	private MyDataRepository repository;
+	MyDataRepository repository;
 
 	@RequestMapping(value = "/mydata", method = RequestMethod.GET) //URLのパス/GETメソッド入手
 	public ModelAndView mydata(@ModelAttribute("formModel") MyData mydata, ModelAndView mav) {
 		mav.setViewName("mydata"); //引っ張ってくるHTMLの名前
 		mav.addObject("msg", "this is sample content.");
 		Iterable<MyData> list = repository.findAll();
-		mav.addObject("data", list);
+		mav.addObject("datalist", list);
 		return mav;
 	}
 
