@@ -115,4 +115,9 @@ public class IndexController {
 		mav.addObject("tax", tax);
 		return mav;
 	}
+
+	@RequestMapping("/frag")
+	public String frag() {
+	    return "frag";
+	}
 }

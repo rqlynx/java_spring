@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>top page</title>
+<style th:include="part :: frag_style"></style>
+</head>
+<body>
+
+  <div th:fragment="header">
+    <p>ここがヘッダーです</p>
+    <hr />
+  </div>
+
+  <h1>Part page</h1>
+  <div th:fragment="frag_body">
+    <h2>fragment</h2>
+    <div class="fragment">
+      <p>this is fragment content.</p>
+      <p>sample message..</p>
+    </div>
+  </div>
+
+  <div th:fragment="footer">
+    <hr />
+    <p>ここがフッターです</p>
+  </div>
+
+</body>
+</html>
