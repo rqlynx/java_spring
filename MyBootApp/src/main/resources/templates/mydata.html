@@ -36,11 +36,21 @@ td {
 	color: black;
 	background: #f0f0f0;
 }
+
+.err {
+	color: red;
+}
 </style>
 </head>
 <body>
+
 	<h1>MyData page</h1>
+	<p th:text="${msg}"></p>
 	<form method="post" action="/mydata" th:object="${formModel}">
+		<ul>
+			<li th:each="error : ${#fields.detailedErrors()}" class="err"
+				th:text="${error.message}" />
+		</ul>
 		<table>
 			<tr>
 				<td><label for="name">名前</label></td>
@@ -72,6 +82,9 @@ td {
 		<tr th:each="obj:${datalist}">
 			<td th:text="${obj.id}"></td>
 			<td th:text="${obj.name}"></td>
+			<td><a th:href="@{'/edit/' + ${obj.id}}">edit</a></td>
+			<td><a th:href="@{'/delete/' + ${obj.id}}">delete</a></td>
+
 		</tr>
 	</table>
 </body>

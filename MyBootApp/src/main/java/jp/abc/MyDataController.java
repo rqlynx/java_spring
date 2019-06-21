@@ -7,6 +7,8 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,10 +34,19 @@ public class MyDataController {
 	}
 
 	@RequestMapping(value = "/mydata", method = RequestMethod.POST)
-	@Transactional(readOnly = false)
-	public ModelAndView form(@ModelAttribute("formModel") MyData mydata, ModelAndView mav) {
-		repository.saveAndFlush(mydata);
-		return new ModelAndView("redirect:/mydata");
+	public ModelAndView form(
+	        @ModelAttribute("formModel") @Validated MyData mydata,
+	        BindingResult result,
+	        ModelAndView mav) {
+	    if (!result.hasErrors()) {
+	        repository.saveAndFlush(mydata);
+	        return new ModelAndView("redirect:/mydata");
+	    }
+	    mav.setViewName("mydata");
+	    mav.addObject("msg", "sorry, error is occured...");
+	    Iterable<MyData> list = repository.findAll();
+	    mav.addObject("datalist", list);
+	    return mav;
 	}
 
 	@PostConstruct
