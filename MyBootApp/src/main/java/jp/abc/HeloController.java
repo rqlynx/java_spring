@@ -12,6 +12,6 @@ public class HeloController {
 	@RequestMapping("/{id}")
 	public DataObject index(@PathVariable int id) {
 
-		return new DataObject(id,names[id],mails[id]);
+		return new DataObject(id, names[id], mails[id]);
 	}
 }
