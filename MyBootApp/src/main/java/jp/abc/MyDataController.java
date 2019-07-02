@@ -1,8 +1,11 @@
 package jp.abc;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.annotation.PostConstruct;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,28 +52,6 @@ public class MyDataController {
 		return mav;
 	}
 
-	@PostConstruct
-	public void init() {
-		MyData d1 = new MyData();
-		d1.setName("tuyano");
-		d1.setAge(123);
-		d1.setMail("syoda@tuyano.com");
-		d1.setMemo("this is data!");
-		repository.saveAndFlush(d1);
-		MyData d2 = new MyData();
-		d2.setName("hanako");
-		d2.setAge(15);
-		d2.setMail("hanako@flower.com");
-		d2.setMemo("this is data!");
-		repository.saveAndFlush(d2);
-		MyData d3 = new MyData();
-		d3.setName("sachiko");
-		d3.setAge(37);
-		d3.setMail("sachiko@happy");
-		d3.setMemo("this is data!");
-		repository.saveAndFlush(d3);
-	}
-
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public ModelAndView edit(@ModelAttribute MyData mydata,
 			@PathVariable int id,
@@ -108,4 +89,22 @@ public class MyDataController {
 		return new ModelAndView("redirect:/mydata");
 	}
 
+	@PersistenceContext
+	EntityManager entityManager;
+
+	MyDataDao<MyData> dao;
+
+	@PostConstruct
+	public void init() {
+		dao = new MyDataDaoImpl(entityManager);
+	}
+
+	@RequestMapping("/dao")
+	public ModelAndView dao(ModelAndView mav) {
+		mav.setViewName("dao");
+		mav.addObject("msg", "DAOを使ったサンプルです。");
+		List<MyData> list = dao.getAll();
+		mav.addObject("datalist", list);
+		return mav;
+	}
 }
