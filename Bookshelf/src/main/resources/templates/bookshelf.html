@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>- bookshelf -</title>
+<style type="text/css">
+h1 {
+	font-size: 18pt;
+	font-weight: bold;
+	color: gray;
+}
+
+body {
+	font-size: 13pt;
+	color: gray;
+	margin: 5px 25px;
+}
+
+pre {
+	border: solid 3px #ddd;
+	padding: 10px;
+}
+
+tr {
+	margin: 5px;
+}
+
+th {
+	padding: 5px;
+	color: white;
+	background: darkgray;
+}
+
+td {
+	padding: 5px;
+	color: black;
+	background: #f0f0f0;
+}
+
+.err {
+	color: red;
+}
+</style>
+
+</head>
+<body>
+
+	<a th:href="@{'/'}">トップページへのリンク</a>
+	<form method="post" action="/bookshelf" th:object="${formModel}">
+		<table>
+			<tr>
+				<td><label for="name">名前</label></td>
+				<td><input type="text" name="name" th:value="*{name}"
+					th:errorclass="err" />
+					<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+						th:errorclass="err"></div></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" /></td>
+			</tr>
+		</table>
+	</form>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>名前</th>
+		</tr>
+		<tr th:each="obj:${datalist}">
+			<td th:text="${obj.id}"></td>
+			<td th:text="${obj.name}"></td>
+			<td><a th:href="@{'/edit/' + ${obj.id}}">編集ページ</a></td>
+		</tr>
+	</table>
+</body>
+</html>

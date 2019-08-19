@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>- bookshelf -</title>
+<style type="text/css">
+h1 {
+	font-size: 18pt;
+	font-weight: bold;
+	color: gray;
+}
+
+h2 {
+	font-size: 16pt;
+	font-weight: bold;
+	color: gray;
+}
+
+body {
+	font-size: 13pt;
+	color: gray;
+	margin: 5px 25px;
+}
+
+.custom-restricted-width {
+	/* To limit the menu width to the content of the menu: */
+	display: inline-block;
+	/* Or set the width explicitly: */
+	/* width: 10em; */
+}
+</style>
+<link rel="stylesheet"
+	href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+	integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="pure-menu custom-restricted-width">
+		<span class="pure-menu-heading">BookSHelfs Menu</span>
+		<a class="pure-button" th:href="@{'/bookshelf/'}">bookshelf</a>
+		<a class="pure-button" th:href="@{'/book/'}">book</a>
+	</div>
+
+</body>
+</html>
